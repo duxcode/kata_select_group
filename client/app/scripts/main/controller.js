@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('App')
-.controller('Main', function ($scope) {
+    .controller('Main', function($scope) {
 
-  $scope.controller_loaded = 'Main controller loaded!';
+        $scope.controller_loaded = 'Main controller loaded!';
 
-});
+    });

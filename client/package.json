@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git@github.com:j0n4s/kata_mines.git"
   },
+  "scripts": {
+    "start": "karma start"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": ">=1.0.1",

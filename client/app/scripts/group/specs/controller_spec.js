@@ -1,28 +1,40 @@
 'use strict';
 
-describe('Controller: select group', function () {
+describe('Controller: select group', function() {
 
   beforeEach(module('Group'));
 
   var controller;
   var scope;
 
-  beforeEach(inject(function ($rootScope, $controller) {
+  beforeEach(inject(function($rootScope, $controller) {
     scope = $rootScope.$new();
-    controller = $controller('group', { $scope: scope });
+    controller = $controller('group', {
+      $scope: scope
+    });
   }));
 
-  describe('On instance', function () {
-    it('should set "controller_loaded" variable in scope', function () {
+  describe('On instance', function() {
+    it('should set "controller_loaded" variable in scope', function() {
       expect(scope.controller_loaded).toContain('loaded');
     });
   });
 
-  describe('when going to /group', function () {
+  describe('On instance', function() {
+    it('scope function multiplication', function() {
+      var res = scope.multiplication([2, 2])
+      expect(res).toBe(4);
+
+      var res = scope.multiplication([2, 2, 2, 2])
+      expect(res).toBe(16);
+    });
+  });
+
+  describe('when going to /group', function() {
 
     var route, location, rootScope, httpBackend;
 
-    beforeEach(inject(function ($route, $location, $rootScope, $httpBackend) {
+    beforeEach(inject(function($route, $location, $rootScope, $httpBackend) {
       route = $route;
       location = $location;
       rootScope = $rootScope;
@@ -31,12 +43,12 @@ describe('Controller: select group', function () {
       httpBackend.when('GET', 'scripts/group/views/group.html').respond('<div></div>');
     }));
 
-    afterEach(function () {
+    afterEach(function() {
       httpBackend.verifyNoOutstandingExpectation();
       httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('should use minesweeper.html and controller', function () {
+    it('should use minesweeper.html and controller', function() {
       expect(route.current).toBeUndefined();
 
       location.path('/group');
